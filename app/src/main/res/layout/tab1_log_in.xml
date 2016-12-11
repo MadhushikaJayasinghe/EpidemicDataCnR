@@ -8,10 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.dproject.epidemicdatacnr.MainActivity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +92,9 @@
         android:id="@+id/pRegButton"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/regisIntrucLabel"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:background="#85c0f7" />
 
     <Button
         android:layout_width="250dp"
@@ -104,7 +102,10 @@
         android:text="Register as a doctor"
         android:id="@+id/dRegButton"
         android:layout_below="@+id/pRegButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#85c0f7"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="250dp"
@@ -112,7 +113,10 @@
         android:text="Register as a medical officer"
         android:id="@+id/mRegButton"
         android:layout_below="@+id/dRegButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#85c0f7"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp" />
 
 
 
