@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class patientRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.util.Arrays;
+
+public class insertData extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String[] provinces;
     String[] districts;
@@ -21,7 +24,7 @@ public class patientRegistration extends AppCompatActivity implements AdapterVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_registration);
+        setContentView(R.layout.activity_insert_data);
 
         //for the spinners
         allArrays = new AllArrays();
@@ -34,7 +37,7 @@ public class patientRegistration extends AppCompatActivity implements AdapterVie
 
         provinces = allArrays.getInsertProvinceArray();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, provinces);
-        spinner = (Spinner) findViewById(R.id.pRegProvinceSpinner);
+        spinner = (Spinner) findViewById(R.id.insertProvinceSpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -44,7 +47,7 @@ public class patientRegistration extends AppCompatActivity implements AdapterVie
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         switch (parent.getId()) {
-            case R.id.pRegProvinceSpinner:
+            case R.id.insertProvinceSpinner:
 
                 String prov = (String) parent.getItemAtPosition(position).toString();
                 districts2 = allArrays.getDistrictArray(prov);
@@ -65,17 +68,9 @@ public class patientRegistration extends AppCompatActivity implements AdapterVie
     public void setDistrictSpinner() {
         districts = new String[]{"Province needed"};
         adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, districts);
-        spinner2 = (Spinner) findViewById(R.id.pRegDistrictSpinner);
+        spinner2 = (Spinner) findViewById(R.id.insertDistrictSpinner);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter2.setNotifyOnChange(true);
         spinner2.setAdapter(adapter2);
     }
-
-
-    /*
-    * Toast.makeText(parent.getContext(),
-                parent.getItemAtPosition(position).toString(),
-                Toast.LENGTH_SHORT).show();
-    *
-    * */
 }

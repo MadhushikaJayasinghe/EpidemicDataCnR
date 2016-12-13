@@ -21,13 +21,12 @@
                 android:layout_height="wrap_content">
 
                 <!-- to input name -->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Name"
-                    android:id="@+id/pRegNameLabel"
+                    android:id="@+id/insertNameLabel"
                     android:padding="10dp"
                     android:layout_marginTop="10dp"
                     android:textSize="16dp" />
@@ -35,22 +34,20 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegNameET"
+                    android:id="@+id/insertNameET"
                     android:ems="14"
                     android:layout_marginTop="40dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:hint="@string/name_with_initials" />
 
-
                 <!-- to input national ID -->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="National ID"
-                    android:id="@+id/pRegNatIdLabel"
+                    android:id="@+id/insertNatIdLabel"
                     android:layout_marginTop="90dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
@@ -58,9 +55,9 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegNatIdET"
+                    android:id="@+id/insertNatIdET"
                     android:ems="10"
-                    android:layout_alignBaseline="@+id/pRegNatIdLabel"
+                    android:layout_alignBaseline="@+id/insertNatIdLabel"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -71,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Date of birth"
-                    android:id="@+id/pRegDOBLabel"
+                    android:id="@+id/insertDOBLabel"
                     android:padding="10dp"
                     android:layout_marginTop="130dp"
                     android:textSize="16dp" />
@@ -79,9 +76,9 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegDOBET"
+                    android:id="@+id/insertDOBET"
                     android:ems="10"
-                    android:layout_alignBaseline="@+id/pRegDOBLabel"
+                    android:layout_alignBaseline="@+id/insertDOBLabel"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -91,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Illness"
-                    android:id="@+id/pRegDiseaseLabel"
+                    android:id="@+id/insertDiseaseLabel"
                     android:padding="10dp"
                     android:layout_marginTop="170dp"
                     android:textSize="16dp" />
@@ -99,9 +96,9 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegDiseaseET"
+                    android:id="@+id/insertDiseaseET"
                     android:ems="10"
-                    android:layout_alignBaseline="@+id/pRegDiseaseLabel"
+                    android:layout_alignBaseline="@+id/insertDiseaseLabel"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -111,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Condition"
-                    android:id="@+id/pRegConditionLabel"
+                    android:id="@+id/insertConditionLabel"
                     android:padding="10dp"
                     android:layout_marginTop="210dp"
                     android:textSize="16dp" />
@@ -119,9 +116,9 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegConditionET"
+                    android:id="@+id/insertConditionET"
                     android:ems="10"
-                    android:layout_alignBaseline="@+id/pRegConditionLabel"
+                    android:layout_alignBaseline="@+id/insertConditionLabel"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
             </RelativeLayout>
@@ -132,12 +129,13 @@
                 android:layout_height="wrap_content">
 
                 <!-- to input region -->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Province"
-                    android:id="@+id/pRegProvLabel"
+                    android:id="@+id/insertProvLabel"
                     android:layout_marginTop="50dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
@@ -145,7 +143,7 @@
                 <Spinner
                     android:layout_width="230dp"
                     android:layout_height="35dp"
-                    android:id="@+id/pRegProvinceSpinner"
+                    android:id="@+id/insertProvinceSpinner"
                     android:layout_marginTop="53dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
@@ -155,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="District"
-                    android:id="@+id/pRegDistLabel"
+                    android:id="@+id/insertDistLabel"
                     android:layout_marginTop="90dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
@@ -164,7 +162,7 @@
                     android:layout_width="230dp"
                     android:padding="0dp"
                     android:layout_height="40dp"
-                    android:id="@+id/pRegDistrictSpinner"
+                    android:id="@+id/insertDistrictSpinner"
                     android:layout_marginTop="93dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
@@ -173,7 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="9"
-                    android:id="@+id/pRegAreaET"
+                    android:id="@+id/insertAreaET"
                     android:layout_marginTop="130dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
@@ -191,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Doctor's name"
-                    android:id="@+id/pRegLabel"
+                    android:id="@+id/insertDoctorLabel"
                     android:layout_marginTop="50dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
@@ -199,7 +197,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegDoctorET"
+                    android:id="@+id/insertDoctorET"
                     android:ems="14"
                     android:layout_marginTop="80dp"
                     android:layout_alignParentRight="true"
@@ -212,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Hospital name"
-                    android:id="@+id/pRegHospitalLabel"
+                    android:id="@+id/insertHospitalLabel"
                     android:layout_marginTop="130dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
@@ -220,7 +218,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pRegHospitalET"
+                    android:id="@+id/insertHospitalET"
                     android:ems="14"
                     android:layout_marginTop="150dp"
                     android:layout_alignParentRight="true"

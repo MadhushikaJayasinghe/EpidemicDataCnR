@@ -26,70 +26,52 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
     Uva             - Badulla, Monaragala
     Western         - Colombo, Gampaha, Kalutara
      */
-
+    String[] provinces;
     String[] districts;
     String[] districts2;
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
     Spinner spinner;
     Spinner spinner2;
+    AllArrays allArrays;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab2_regional, container, false);
+
+        //for the spinners
+        allArrays = new AllArrays();
         setProvinceSpinner(rootView);
         setDistrictSpinner(rootView);
         districts= new String[]{"Province not specified"};
+
         return rootView;
     }
 
     public void setProvinceSpinner(View view){
-        String[] provinces = {"All island","Central","Eastern","North Central",
-                "Northern","North Western","Sabaragamuwa","Southern","Uva","Western"};
 
+        provinces = allArrays.getProvinceArray();
         adapter = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,provinces);
         spinner = (Spinner) view.findViewById(R.id.provinceSpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
-
-
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(parent.getContext(),
-                parent.getItemAtPosition(position).toString(),
-                Toast.LENGTH_SHORT).show();
         switch (parent.getId()) {
             case R.id.provinceSpinner:
+                Toast.makeText(parent.getContext(),
+                        parent.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_SHORT).show();
 
                 String prov = (String) parent.getItemAtPosition(position).toString();
-                if (prov.equals("Central")) {
-                    districts2 = new String[]{"Kandy", "Matale", "Nuwara Eliya"};
-                } else if (prov.equals("Eastern")) {
-                    districts2 = new String[]{"Ampara", "Batticaloa", "Trincomalee"};
-                } else if (prov.equals("North Central")) {
-                    districts2 = new String[]{"Anuradhapura", "Polonnaruwa"};
-                } else if (prov.equals("Northern")) {
-                    districts2 = new String[]{"Jaffna", "Kilinochchi", "Mannar", "Mullaitivu", "Vavuniya"};
-                } else if (prov.equals("North Western")) {
-                    districts2 = new String[]{"Kurunegala", "Puttalam"};
-                } else if (prov.equals("Sabaragamuwa")) {
-                    districts2 = new String[]{"Kegalle", "Ratnapura"};
-                } else if (prov.equals("Southern")) {
-                    districts2 = new String[]{"Galle", "Hambantota", "Matara"};
-                } else if (prov.equals("Uva")) {
-                    districts2 = new String[]{"Badulla", "Monaragala"};
-                } else if (prov.equals("Western")) {
-                    districts2 = new String[]{"Colombo", "Gampaha", "Kalutara"};
-                } else {
-                    districts2 = new String[]{"Province not specified"};
-                }
+                districts2 = allArrays.getDistrictArray(prov);
 
                 ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, districts2);
                 adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

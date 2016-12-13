@@ -20,7 +20,19 @@ public class Tab1LogIn extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab1_log_in, container, false);
+
+        final Button loginButton = (Button) rootView.findViewById(R.id.loginButton);
         final Button pRegButton = (Button) rootView.findViewById(R.id.pRegButton);
+
+
+        loginButton.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent insertData = new Intent(getActivity(), insertData.class);
+                        getActivity().startActivity(insertData);
+                    }
+                }
+        );
 
         pRegButton.setOnClickListener(
                 new View.OnClickListener() {
