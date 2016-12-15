@@ -12,16 +12,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.android.volley.RequestQueue;
 
 
 public class Tab1LogIn extends Fragment{
+
+    private EditText id, password;
+    private Button loginButton;
+    private RequestQueue requestQueue;
+    private static final String url = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab1_log_in, container, false);
 
-        final Button loginButton = (Button) rootView.findViewById(R.id.loginButton);
+        loginButton = (Button) rootView.findViewById(R.id.loginButton);
         final Button pRegButton = (Button) rootView.findViewById(R.id.pRegButton);
 
 
