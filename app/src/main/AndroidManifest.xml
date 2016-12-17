@@ -18,10 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".patientRegistration" android:parentActivityName=".MainActivity" />
-        <activity android:name=".insertData"  />
-        <activity android:name=".DoctorRegistration" android:parentActivityName=".MainActivity" />
-        <activity android:name=".MedicalOfficerRegistration" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".patientRegistration" />
+        <activity android:name=".insertData"></activity>
     </application>
 
 </manifest>
