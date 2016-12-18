@@ -237,13 +237,60 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
+                <!-- to input password -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Password"
+                    android:id="@+id/pRegPasswordLabel"
+                    android:layout_marginTop="220dp"
+                    android:padding="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="8"
+                    android:id="@+id/pRegPasswordET"
+                    android:layout_alignBaseline="@+id/pRegPasswordLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <!-- to confirm password -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Confirm password"
+                    android:id="@+id/pRegConfirmPasswordLabel"
+                    android:layout_marginTop="260dp"
+                    android:padding="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="8"
+                    android:id="@+id/pRegConfirmET"
+                    android:layout_alignBaseline="@+id/pRegConfirmPasswordLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Insert Data"
-                    android:id="@+id/insertDataButton"
-                    android:layout_marginTop="230dp"
+                    android:text="Register and Insert Data"
+                    android:id="@+id/pRegPRegButton"
+                    android:layout_marginTop="350dp"
                     android:layout_marginRight="100dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"

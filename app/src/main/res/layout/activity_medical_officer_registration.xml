@@ -11,110 +11,183 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.dproject.epidemicdatacnr.DoctorRegistration">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding"
-        android:text="Register as a medical officer"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:paddingTop="@dimen/padding"
-        android:textSize="@dimen/textsize"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name with initials"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="National ID"
-        android:paddingTop="@dimen/padding"
-        android:textSize="@dimen/textsize"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:paddingTop="@dimen/padding"
-        android:textSize="@dimen/textsize"
-        android:textColor="@color/black"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <RelativeLayout
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding"
+                android:text="Register as a medical officer"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textAlignment="center" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:paddingTop="@dimen/padding"
+                android:textSize="@dimen/textsize"
+                android:textColor="@color/black" />
 
-        <!-- to input region -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Province"
-            android:id="@+id/mRegProvLabel"
-            android:layout_marginTop="50dp"
-            android:padding="10dp"
-            android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name with initials"
+                android:id="@+id/moRegNameET" />
 
-        <Spinner
-            android:layout_width="230dp"
-            android:layout_height="35dp"
-            android:id="@+id/mRegProvinceSpinner"
-            android:layout_marginTop="53dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="National ID"
+                android:paddingTop="@dimen/padding"
+                android:textSize="@dimen/textsize"
+                android:textColor="@color/black" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="District"
-            android:id="@+id/mRegDistLabel"
-            android:layout_marginTop="90dp"
-            android:padding="10dp"
-            android:textSize="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moRegNationalIdET" />
 
-        <Spinner
-            android:layout_width="230dp"
-            android:padding="0dp"
-            android:layout_height="40dp"
-            android:id="@+id/mRegDistrictSpinner"
-            android:layout_marginTop="93dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:paddingTop="@dimen/padding"
+                android:textSize="@dimen/textsize"
+                android:textColor="@color/black" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="9"
-            android:id="@+id/mRegAreaET"
-            android:layout_marginTop="130dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:hint="@string/area" />
-    </RelativeLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mRegButton"
-        android:paddingTop="@dimen/padding"
-        android:text="Register"
-        android:textSize="@dimen/textsize"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/moRegTitleET" />
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!-- to input region -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Province"
+                    android:id="@+id/mRegProvLabel"
+                    android:layout_marginTop="50dp"
+                    android:padding="10dp"
+                    android:textSize="16dp" />
+
+                <Spinner
+                    android:layout_width="230dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/mRegProvinceSpinner"
+                    android:layout_marginTop="53dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="District"
+                    android:id="@+id/mRegDistLabel"
+                    android:layout_marginTop="90dp"
+                    android:padding="10dp"
+                    android:textSize="16dp" />
+
+                <Spinner
+                    android:layout_width="230dp"
+                    android:padding="0dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/mRegDistrictSpinner"
+                    android:layout_marginTop="93dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="9"
+                    android:id="@+id/mRegAreaET"
+                    android:layout_marginTop="130dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:hint="@string/area" />
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!-- to input password -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Password"
+                    android:id="@+id/pRegPasswordLabel"
+                    android:layout_marginTop="50dp"
+                    android:padding="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="8"
+                    android:id="@+id/moRegPasswordET"
+                    android:layout_alignBaseline="@+id/pRegPasswordLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <!-- to confirm password -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Confirm password"
+                    android:id="@+id/pRegConfirmPasswordLabel"
+                    android:layout_marginTop="90dp"
+                    android:padding="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="8"
+                    android:id="@+id/moRegConfirmET"
+                    android:layout_alignBaseline="@+id/pRegConfirmPasswordLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moRegButton"
+                    android:paddingTop="@dimen/padding"
+                    android:layout_marginTop="150dp"
+                    android:text="Register"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
