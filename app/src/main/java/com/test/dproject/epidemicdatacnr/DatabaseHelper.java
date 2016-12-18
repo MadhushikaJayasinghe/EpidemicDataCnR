@@ -18,19 +18,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String REGION_TABLE = "Region";
     public static final String HOSPITAL_TABLE = "Hospital";
 
+    //Doctor's attributes
     public static final String Doc_DocID_Col = "DoctorId";
     public static final String Doc_NatID_Col = "NationalId";
     public static final String Doc_Name_Col = "Name";
+
+    // password attributes
+    public static final String PASSWORD = "password";
+
 
     //CREATE PATIENT TABLE
     public static final String CREATE_DOCTOR_TABLE = "CREATE TABLE IF NOT EXISTS "
             + PATIENT_TABLE + "(" + Doc_DocID_Col + " TEXT PRIMARY KEY, "
             + Doc_NatID_Col + " TEXT, " + Doc_Name_Col + " TEXT);";
-    //CREATE MED_OFFICER_TABLE
-    //CREATE DISEASE_TABLE
-    //CREATE REGION_TABLE
-    //CREATE HOSPITAL_TABLE
 
+    //CREATE PASSWORD_TABLE
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
