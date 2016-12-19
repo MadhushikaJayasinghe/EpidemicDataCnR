@@ -20,6 +20,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/padding"
+                    android:text="Data collection form"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
                 <!-- to input name -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,7 +75,8 @@
                     android:ems="10"
                     android:layout_alignBaseline="@+id/insertNatIdLabel"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:hint="@string/enter_child_if_under_18" />
 
 
                 <!-- to input date of birth -->
@@ -183,26 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <!-- to input Doctor's name -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Doctor's name"
-                    android:id="@+id/insertDoctorLabel"
-                    android:layout_marginTop="50dp"
-                    android:padding="10dp"
-                    android:textSize="16dp" />
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/insertDoctorET"
-                    android:ems="14"
-                    android:layout_marginTop="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:hint="@string/doctor_s_name_with_initials" />
 
                 <!-- to input hospital name -->
                 <TextView
@@ -211,7 +209,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Hospital name"
                     android:id="@+id/insertHospitalLabel"
-                    android:layout_marginTop="130dp"
+                    android:layout_marginTop="50dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
 
@@ -220,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/insertHospitalET"
                     android:ems="14"
-                    android:layout_marginTop="150dp"
+                    android:layout_marginTop="70dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -230,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:text="Insert Data"
                     android:id="@+id/insertDataButton"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginTop="150dp"
                     android:layout_marginRight="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="30dp" />

@@ -42,4 +42,10 @@ public class AllArrays {
         }
         return districts2;
     }
+
+    public String[] getDiseaseArray() {
+        String[] prArray = {"None", "Measles", "Encephalitis", "Colera",
+                "Chicken pox"};
+        return prArray;
+    }
 }

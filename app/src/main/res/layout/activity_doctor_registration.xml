@@ -69,7 +69,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Password"
             android:id="@+id/docRegPasswordLabel"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="15dp"
             android:padding="10dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -81,7 +81,7 @@
             android:inputType="textPassword"
             android:ems="8"
             android:id="@+id/docRegPasswordET"
-            android:layout_alignBaseline="@+id/pRegPasswordLabel"
+            android:layout_alignBaseline="@+id/docRegPasswordLabel"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -92,7 +92,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Confirm password"
             android:id="@+id/pRegConfirmPasswordLabel"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="55dp"
             android:padding="10dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -108,16 +108,20 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding"
+            android:id="@+id/docRegRegisterButton"
+            android:text="Register"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            android:layout_marginTop="105dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="100dp"
+            android:textColor="@color/black" />
+
     </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding"
-        android:id="@+id/docRegRegisterButton"
-        android:text="Register"
-        android:textSize="@dimen/textsize"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
 
 </LinearLayout>

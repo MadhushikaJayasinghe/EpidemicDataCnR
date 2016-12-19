@@ -196,27 +196,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <!-- to input Doctor's name -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Doctor's name"
-                    android:id="@+id/pRegLabel"
-                    android:layout_marginTop="50dp"
-                    android:padding="10dp"
-                    android:textSize="16dp" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/pRegDoctorET"
-                    android:ems="14"
-                    android:layout_marginTop="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:hint="@string/doctor_s_name_with_initials" />
-
                 <!-- to input hospital name -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,7 +203,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Hospital name"
                     android:id="@+id/pRegHospitalLabel"
-                    android:layout_marginTop="130dp"
+                    android:layout_marginTop="50dp"
                     android:padding="10dp"
                     android:textSize="16dp" />
 
@@ -233,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/pRegHospitalET"
                     android:ems="14"
-                    android:layout_marginTop="150dp"
+                    android:layout_marginTop="70dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -245,7 +224,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Password"
                     android:id="@+id/pRegPasswordLabel"
-                    android:layout_marginTop="220dp"
+                    android:layout_marginTop="140dp"
                     android:padding="10dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
@@ -268,7 +247,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Confirm password"
                     android:id="@+id/pRegConfirmPasswordLabel"
-                    android:layout_marginTop="260dp"
+                    android:layout_marginTop="180dp"
                     android:padding="10dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
@@ -290,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:text="Register and Insert Data"
                     android:id="@+id/pRegPRegButton"
-                    android:layout_marginTop="350dp"
+                    android:layout_marginTop="270dp"
                     android:layout_marginRight="100dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"

@@ -8,5 +8,6 @@
     <string name="district"><font size="16">District</font></string>
     <string name="area"><font size="16">Area</font></string>
     <string name="doctor_s_name_with_initials"><font size="16">Doctor\'s name with initials</font></string>
+    <string name="enter_child_if_under_18"><font size="16">Enter \'child\' if under 18</font></string>
 
 </resources>

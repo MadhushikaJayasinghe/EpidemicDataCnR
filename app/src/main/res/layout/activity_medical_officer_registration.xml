@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Name with initials"
                 android:id="@+id/moRegNameET" />
-
+            <!-- to input national id -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/moRegNationalIdET" />
-
+            <!-- to input title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Password"
-                    android:id="@+id/pRegPasswordLabel"
+                    android:id="@+id/moRegPasswordLabel"
                     android:layout_marginTop="50dp"
                     android:padding="10dp"
                     android:layout_alignParentLeft="true"
@@ -148,7 +148,7 @@
                     android:inputType="textPassword"
                     android:ems="8"
                     android:id="@+id/moRegPasswordET"
-                    android:layout_alignBaseline="@+id/pRegPasswordLabel"
+                    android:layout_alignBaseline="@+id/moRegPasswordLabel"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -184,6 +184,9 @@
                     android:text="Register"
                     android:textSize="@dimen/textsize"
                     android:textStyle="bold"
+                    android:layout_marginRight="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="30dp"
                     android:textColor="@color/black" />
             </RelativeLayout>
         </LinearLayout>
