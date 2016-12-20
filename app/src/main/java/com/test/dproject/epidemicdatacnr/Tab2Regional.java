@@ -11,11 +11,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tab2Regional extends Fragment implements AdapterView.OnItemSelectedListener{
     /*
@@ -38,6 +54,15 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
     Spinner spinner2;
     AllArrays allArrays;
 
+    private Button getRDataButton;
+    private RequestQueue requestQueue;
+    private static final String url = "mainUrl";
+    private StringRequest request;
+    //to database
+    String prov;
+    String dis;
+
+    String[][] regionData;//return data
 
 
     @Override
@@ -50,6 +75,8 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
         setProvinceSpinner(rootView);
         setDistrictSpinner(rootView);
         districts= new String[]{"Province not specified"};
+
+        requestQueue = Volley.newRequestQueue(getActivity());
 
         return rootView;
     }
@@ -91,8 +118,8 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
             case R.id.districtSpinner:
                 String district = (String) parent.getItemAtPosition(position).toString();
                 if (!district.equals("Province not specified")) {
-                    String[][] regionData = {{"Measles", "6"}, {"Encephalitis", "7"}};
-                    setTable(regionData);
+                    insertData();
+
                 }
                 break;
         }
@@ -122,6 +149,46 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
             table.addView(tr);
         }
     }
+
+    public void insertData() {
+        request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.names().get(0).equals("success")) {
+                        Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                        //data :{{"Measles", "6"}, {"Encephalitis", "7"}};
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        //String name = jsonArray.getString("user_id");
+                        //String email = jsonArray.getString("email_address");
+                        setTable(regionData);
+                    } else if (jsonObject.names().get(0).equals("error")) {
+                        Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("flag", "get regional data");
+                hashMap.put("province", prov);
+                hashMap.put("district", dis);
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
+
+    }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

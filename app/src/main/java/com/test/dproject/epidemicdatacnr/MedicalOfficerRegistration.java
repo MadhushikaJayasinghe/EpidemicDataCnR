@@ -5,7 +5,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MedicalOfficerRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -18,6 +35,15 @@ public class MedicalOfficerRegistration extends AppCompatActivity implements Ada
     Spinner spinner2;
     AllArrays allArrays;
 
+    private EditText name, nationalId, title, area, apassword, cpassword;
+    private Button medicalRgisterButton;
+    private RequestQueue requestQueue;
+    private static final String url = "mainUrl";
+    private StringRequest request;
+    //to database
+    String prov;
+    String dis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +54,66 @@ public class MedicalOfficerRegistration extends AppCompatActivity implements Ada
         setProvinceSpinner();
         setDistrictSpinner();
         districts = new String[]{"Province needed"};
+
+        name = (EditText) findViewById(R.id.moRegNameET);
+        nationalId = (EditText) findViewById(R.id.moRegNationalIdET);
+        title = (EditText) findViewById(R.id.moRegTitleET);
+        area = (EditText) findViewById(R.id.moRegAreaET);
+        apassword = (EditText) findViewById(R.id.moRegPasswordET);
+        cpassword = (EditText) findViewById(R.id.moRegConfirmET);
+
+        medicalRgisterButton = (Button) findViewById(R.id.moRegButton);
+
+        requestQueue = Volley.newRequestQueue(this);
+
+        medicalRgisterButton.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        moRegister();
+                    }
+                }
+        );
+    }
+
+    public void moRegister() {
+        request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.names().get(0).equals("success")) {
+                        Toast.makeText(getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else if (jsonObject.names().get(0).equals("error")) {
+                        Toast.makeText(getApplicationContext(), jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("flag", "mo registration");
+                hashMap.put("name", name.getText().toString());
+                hashMap.put("nationalId", nationalId.getText().toString());
+                hashMap.put("title,,", title.getText().toString());
+                hashMap.put("province", prov);
+                hashMap.put("district", dis);
+                hashMap.put("area", area.getText().toString());
+                hashMap.put("apassword", apassword.getText().toString());
+                hashMap.put("cpassword", cpassword.getText().toString());
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
+
     }
 
     public void setProvinceSpinner() {
@@ -46,12 +132,16 @@ public class MedicalOfficerRegistration extends AppCompatActivity implements Ada
         switch (parent.getId()) {
             case R.id.mRegProvinceSpinner:
 
-                String prov = (String) parent.getItemAtPosition(position).toString();
+                prov = (String) parent.getItemAtPosition(position).toString();
                 districts2 = allArrays.getDistrictArray(prov);
 
                 ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, districts2);
                 adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner2.setAdapter(adapter3);
+                break;
+
+            case R.id.mRegDistrictSpinner:
+                dis = (String) parent.getItemAtPosition(position).toString();
                 break;
         }
 

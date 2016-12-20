@@ -15,6 +15,21 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -22,6 +37,10 @@ public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedL
     ArrayAdapter<String> adapter;
     Spinner spinner;
     AllArrays allArrays;
+
+    private RequestQueue requestQueue;
+    private static final String url = "mainUrl";
+    private StringRequest request;
 
     String disease;
 
@@ -32,6 +51,8 @@ public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedL
 
         allArrays = new AllArrays();
         setDiseaseSpinner(rootView);
+
+        requestQueue = Volley.newRequestQueue(getActivity());
         return rootView;
     }
 
@@ -51,6 +72,7 @@ public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedL
             case R.id.diseaseSpinner:
                 disease = (String) parent.getItemAtPosition(position).toString();
                 if (!disease.equals("None")) {
+                    getDiseaseData();
                     String[][] diseaseData = {{"Western Province", "6"}, {"Eastern Province", "7"}};
                     setTable(diseaseData);
                 }
@@ -82,6 +104,40 @@ public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedL
             //tr.addView(c3);
             table.addView(tr);
         }
+    }
+
+    public void getDiseaseData() {
+        request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.names().get(0).equals("success")) {
+                        Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+
+                    } else if (jsonObject.names().get(0).equals("error")) {
+                        Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("flag", "get disease data");
+                hashMap.put("disease", disease);
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
+
     }
 
     @Override
