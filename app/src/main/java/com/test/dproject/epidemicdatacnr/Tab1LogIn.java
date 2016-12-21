@@ -98,7 +98,10 @@ public class Tab1LogIn extends Fragment{
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.names().get(0).equals("success")) {
                         Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
-                        Intent insertData = new Intent(getActivity(), insertData.class);
+                        Intent insertData = new Intent(getActivity(), InsertData.class);
+                        Bundle b = new Bundle();
+                        b.putString("insertingPerson", jsonObject.getString("natinalId")); //Your id
+                        insertData.putExtras(b);
                         getActivity().startActivity(insertData);
                     } else if (jsonObject.names().get(0).equals("error")) {
                         Toast.makeText(getActivity().getApplicationContext(), jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
@@ -116,6 +119,7 @@ public class Tab1LogIn extends Fragment{
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("flag", "login");
                 hashMap.put("nationalId", id.getText().toString());
                 hashMap.put("apassword", password.getText().toString());
                 return hashMap;

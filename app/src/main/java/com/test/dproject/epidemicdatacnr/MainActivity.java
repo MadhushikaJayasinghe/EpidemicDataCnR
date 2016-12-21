@@ -11,15 +11,38 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.test.dproject.epidemicdatacnr.exceptions.InvalidPatientException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
+    private RequestQueue requestQueue;
+    private static final String url = "mainUrl";
+    private StringRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +62,74 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        PatientDAOImpl patientDAOImpl1 = new PatientDAOImpl();
+        patientDAOImpl1.createmethod(this);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        if (fab != null) {
+            requestQueue = Volley.newRequestQueue(this);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Trying to upload collected data to main server", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    PatientDAOImpl patientDAOImpl = new PatientDAOImpl();
+                    List<Patient> patientList = patientDAOImpl.getAllPatients();
+                    if (!patientList.isEmpty()) {
+                        for (Patient patient : patientList) {
+                            uploadData(patient, patientDAOImpl);
+                        }
+                    }
+                    Snackbar.make(view, "Upload complete", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        }
+
+    }
+
+    public void uploadData(final Patient patient, final PatientDAOImpl patientDAOImpl) {
+        request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.names().get(0).equals("success")) {
+                        Toast.makeText(getApplicationContext(), jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                        patientDAOImpl.removePatient(patient.getPatient_ID());
+                    } else if (jsonObject.names().get(0).equals("error")) {
+                        Toast.makeText(getApplicationContext(), jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InvalidPatientException e) {
+                    e.printStackTrace();
+                }
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Log.i(TAG, "error");
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("flag", "insert data");
+                hashMap.put("name", patient.getName());
+                hashMap.put("nationalId", patient.getNational_ID());
+                hashMap.put("dob", patient.getDate_Of_Birth());
+                hashMap.put("disease", patient.getIllness());
+                hashMap.put("state", patient.getIllness());
+                hashMap.put("province", patient.getProvince());
+                hashMap.put("district", patient.getDistrict());
+                hashMap.put("area", patient.getArea());
+                hashMap.put("hospital", patient.getHospital());
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
 
     }
 

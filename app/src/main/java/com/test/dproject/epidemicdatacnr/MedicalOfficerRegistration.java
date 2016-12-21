@@ -100,7 +100,7 @@ public class MedicalOfficerRegistration extends AppCompatActivity implements Ada
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("flag", "mo registration");
+                hashMap.put("flag", "register mo");
                 hashMap.put("name", name.getText().toString());
                 hashMap.put("nationalId", nationalId.getText().toString());
                 hashMap.put("title,,", title.getText().toString());

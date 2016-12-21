@@ -6,45 +6,34 @@ import java.util.Date;
  * Created by Tharushi on 12/18/2016.
  */
 public class Patient {
-    private String patient_ID;      //char(8)
+    private int patient_ID;      //char(8)
     private String name;
-    private Date date_Of_Birth;     //date(10)
     private String national_ID;     //char(10)
-    private Disease illness;
+    private String date_Of_Birth;     //date(10)
+    private String illness;
     private String condition;
-    private Region region;
+    private String province;
+    private String district;
+    private String area;
+    private String hospital;
 
     //Constructor method. Name and National ID are not null fields.
-    public Patient(String name, String national_ID) { //national id is 10 digits long
+    public Patient(int patient_ID, String name, String national_ID, String date_Of_Birth,
+                   String illness, String condition, String province, String district, String area, String hospital) { //national id is 10 digits long
         this.name = name;
         this.national_ID = national_ID;
+        this.date_Of_Birth = date_Of_Birth;
+        this.illness = illness;
+        this.condition = condition;
+        this.province = province;
+        this.district = district;
+        this.area = area;
+        this.hospital = hospital;
     }
 
-    // set methods
-    public void setPatient_ID(String patient_ID){
-        this.patient_ID = patient_ID;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setNational_ID(String national_ID){
-        this.national_ID = national_ID;
-    }
-    public void setDateOfBirth(Date date_Of_Birth) {
-        this.date_Of_Birth = date_Of_Birth;
-    }
-    public void setIllness(Disease illness) {
-        this.illness = illness;
-    }
-    public void setCondition(String condition){
-        this.condition = condition;
-    }
-    public void setRegion(Region region){
-        this.region = region;
-    }
 
     //Get Methods
-    public String getPatient_ID() {
+    public int getPatient_ID() {
         return patient_ID;
     }
 
@@ -52,28 +41,39 @@ public class Patient {
         return name;
     }
 
-    public Date getDate_Of_Birth(){
-        return date_Of_Birth;
-    }
-
     public String getNational_ID() {
         return national_ID;
     }
+
+    public String getDate_Of_Birth() {
+        return date_Of_Birth;
+    }
+
+    public String getIllness() {
+        return illness;
+    }
+
     public String getCondition() {
         return condition;
     }
-    public Disease getIllness() {
-        return illness;
-    }
-    public Region getRegion() {
-        return region;
+
+    public String getProvince() {
+        return province;
     }
 
-    //Reset the condition
-    public boolean deleteCondition() {
-        this.condition = null;
-        return true;
+    public String getDistrict() {
+        return district;
     }
+
+    public String getArea() {
+        return area;
+    }
+
+    public String getHospital() {
+        return hospital;
+    }
+
+
 }
 
 

@@ -78,7 +78,7 @@ public class DoctorRegistration extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("flag", "doctor registration");
+                hashMap.put("flag", "register doctor");
                 hashMap.put("name", name.getText().toString());
                 hashMap.put("nationalId", nationalId.getText().toString());
                 hashMap.put("doctorId", doctorId.getText().toString());

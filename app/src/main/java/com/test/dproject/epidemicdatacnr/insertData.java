@@ -3,6 +3,7 @@ package com.test.dproject.epidemicdatacnr;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +27,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class insertData extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class InsertData extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String[] provinces;
     String[] districts;
@@ -37,6 +38,8 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
     Spinner spinner2;
     AllArrays allArrays;
 
+    private static final String TAG = "volley";
+
     private EditText name, nationalId, dob, disease, state, area, hospital;
     private Button insertButton;
     private RequestQueue requestQueue;
@@ -46,10 +49,16 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
     String prov;
     String dis;
 
+    String insertingPerson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_data);
+
+        Bundle b = getIntent().getExtras();
+        if (b != null)
+            insertingPerson = b.getString("insertingPerson");
 
         //for the spinners
         allArrays = new AllArrays();
@@ -66,12 +75,17 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
         hospital = (EditText) findViewById(R.id.insertHospitalET);
         insertButton = (Button) findViewById(R.id.insertDataButton);
 
+        final PatientDAOImpl patientDAOImpl = new PatientDAOImpl();
+        patientDAOImpl.createmethod(this);
+
+
+
         requestQueue = Volley.newRequestQueue(this);
 
         insertButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        insertData();
+                        insertData(patientDAOImpl);
                     }
                 }
         );
@@ -121,7 +135,7 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
         spinner2.setAdapter(adapter2);
     }
 
-    public void insertData() {
+    public void insertData(final PatientDAOImpl patientDAOImpl) {
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -141,6 +155,16 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "error");
+                Patient patient = new Patient(1, name.getText().toString(), nationalId.getText().toString(),
+                        dob.getText().toString(), disease.getText().toString(),
+                        state.getText().toString(), prov, dis,
+                        area.getText().toString(), hospital.getText().toString()
+                );
+                patientDAOImpl.addPatient(patient);
+                Toast.makeText(getApplicationContext(), "No connection. Data added to app database ", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
 
             }
         }) {
@@ -148,6 +172,7 @@ public class insertData extends AppCompatActivity implements AdapterView.OnItemS
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<String, String>();
                 hashMap.put("flag", "insert data");
+                hashMap.put("insertingPerson", insertingPerson);
                 hashMap.put("name", name.getText().toString());
                 hashMap.put("nationalId", nationalId.getText().toString());
                 hashMap.put("dob", dob.getText().toString());
