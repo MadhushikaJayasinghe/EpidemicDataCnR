@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private RequestQueue requestQueue;
-    private static final String url = "mainUrl";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
 
     @Override

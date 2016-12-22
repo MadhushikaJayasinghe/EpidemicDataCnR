@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //CREATE PATIENT TABLE
     public static final String CREATE_PATIENT_TABLE = "CREATE TABLE IF NOT EXISTS "
-            + PATIENT_TABLE + "(" + P_PatientNum_Col + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + PATIENT_TABLE + "(" + P_PatientNum_Col + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + P_Name_Col + " TEXT, " + P_NatID_Col + " TEXT, " + P_DOB_Col + " TEXT,"
             + P_Illness_Col + " TEXT," + P_Condition_Col + " TEXT,"
             + P_Province_Col + " TEXT, " + P_District_Col + " TEXT,"

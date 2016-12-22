@@ -38,7 +38,7 @@ public class MedicalOfficerRegistration extends AppCompatActivity implements Ada
     private EditText name, nationalId, title, area, apassword, cpassword;
     private Button medicalRgisterButton;
     private RequestQueue requestQueue;
-    private static final String url = "mainUrl";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
     //to database
     String prov;

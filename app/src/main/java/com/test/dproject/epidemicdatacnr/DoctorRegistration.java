@@ -26,7 +26,7 @@ public class DoctorRegistration extends AppCompatActivity {
     private EditText name, nationalId, doctorId, apassword, cpassword;
     private Button doctorRegButton;
     private RequestQueue requestQueue;
-    private static final String url = "mainUrl";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
 
     @Override

@@ -34,7 +34,7 @@ public class Tab1LogIn extends Fragment{
     private EditText id, password;
     private Button loginButton;
     private RequestQueue requestQueue;
-    private static final String url = "http://10.0.2.2/phpFiles/user_control.php";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
 
     @Override

@@ -39,7 +39,7 @@ public class Tab3Disease extends Fragment implements AdapterView.OnItemSelectedL
     AllArrays allArrays;
 
     private RequestQueue requestQueue;
-    private static final String url = "mainUrl";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
 
     String disease;

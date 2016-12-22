@@ -56,7 +56,7 @@ public class Tab2Regional extends Fragment implements AdapterView.OnItemSelected
 
     private Button getRDataButton;
     private RequestQueue requestQueue;
-    private static final String url = "mainUrl";
+    private static final String url = "http://10.0.2.2/new/startingPoint.php";
     private StringRequest request;
     //to database
     String prov;
